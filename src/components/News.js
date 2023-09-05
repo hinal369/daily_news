@@ -9,6 +9,9 @@ export default function News(props) {
   const [page, setPage] = useState(1);
   const [totalResults, setTotalResults] = useState(0);
 
+  const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
   const updateNews = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`
     setLoading(true)
@@ -20,6 +23,7 @@ export default function News(props) {
   }
   
   useEffect(() => {
+    document.title = `Daily News - ${capitalize(props.category)}`
     updateNews();
   }, []);
 
