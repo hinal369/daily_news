@@ -4,10 +4,10 @@ import Spinner from "./Spinner";
 import PropTypes from 'prop-types'
 
 export default function News(props) {
-  const [articles, setArticles] = useEffect([]);
-  const [loading, setLoading] = useEffect(false);
-  const [page, setPage] = useEffect(1);
-  const [totalResults, setTotalResults] = useEffect(0);
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
 
   const updateNews = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`
